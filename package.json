@@ -1,6 +1,6 @@
 {
   "name": "mini-lake",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A small copy of waterfall to just to play around with the context API a little more.",
   "source": "src/index.jsx",
   "main": "build/index.js",
