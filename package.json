@@ -5,7 +5,7 @@
   "source": "src/index.jsx",
   "main": "build/index.js",
   "scripts": {
-    "build": "microbundle -f cjs",
+    "build": "webpack",
     "prettify": "prettier src/** --write",
     "test": "jest"
   },
