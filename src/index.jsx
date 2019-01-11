@@ -2,10 +2,11 @@ import React, { Component, createContext } from 'react'
 
 const Context = createContext()
 
-class Provider extends Component {
+export class Provider extends Component {
   constructor(props) {
-    const { actions, initialState } = props
+    super(props)
 
+    const { actions, initialState } = props
     let wrappedActions = {}
 
     for (let actionName in actions) {
@@ -18,32 +19,24 @@ class Provider extends Component {
     }
   }
 
-  actionWrapper = (action) => {
-    this.setState(action(this.state))
+  actionWrapper = action => {
+    return () => {
+      this.setState(action(this.state))
+    }
   }
 
   render() {
     const { children } = this.props
-    return (
-      <Context.Provider value={this.state}>
-        {children}
-      </Context.Provider>
-    )
+    return <Context.Provider value={this.state}>{children}</Context.Provider>
   }
 }
 
-
-const connect = ChildComponent => {
+export const connect = ChildComponent => {
   return props => {
     return (
       <Context.Consumer>
-        <ChildComponent {...props} {...store} />
+        {store => <ChildComponent {...props} {...store} />}
       </Context.Consumer>
     )
   }
-}
-
-export default {
-  Provider,
-  connect
 }
