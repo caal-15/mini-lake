@@ -1,0 +1,39 @@
+{
+  "name": "mini-lake",
+  "version": "0.0.1",
+  "description": "A small copy of waterfall to just to play around with the context API a little more.",
+  "source": "src/index.js",
+  "main": "build/index.js",
+  "scripts": {
+    "prettify": "prettier src/** --write",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caal-15/mini-lake.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "context"
+  ],
+  "author": "Carlos González",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/caal-15/mini-lake/issues"
+  },
+  "homepage": "https://github.com/caal-15/mini-lake#readme",
+  "dependencies": {
+    "react": "^16.7.0"
+  },
+  "devDependencies": {
+    "husky": "^1.3.1",
+    "microbundle": "^0.9.0",
+    "prettier": "^1.15.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettify"
+    }
+  }
+}
