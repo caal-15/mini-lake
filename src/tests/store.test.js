@@ -46,11 +46,45 @@ describe('When connecting a component to the store', () => {
 
     expect(renderedCounter).toBeTruthy()
     expect(renderedCounter.prop('counter')).toEqual(0)
-    const buttonWrapper = wrapper.find('button')
+    const buttonWrapper = wrapper.find('button.add')
     buttonWrapper.simulate('click')
 
     wrapper.update()
     renderedCounter = wrapper.find(Counter)
     expect(renderedCounter.prop('counter')).toEqual(1)
+  })
+
+  it('Should make call parameters available to the callback', () => {
+    const initialState = { counter: 0 }
+    const addToCounter = state => {
+      const { counter } = state
+      return { counter: counter + 1 }
+    }
+    const setCounter = (state, count) => {
+      return { ...state, counter: count }
+    }
+    const actions = { addToCounter, setCounter }
+
+    const ConnectedComponnent = connect(Counter)
+
+    const App = () => (
+      <Provider initialState={initialState} actions={actions}>
+        <ConnectedComponnent />
+      </Provider>
+    )
+
+    const wrapper = mount(<App />)
+    let renderedCounter = wrapper.find(Counter)
+
+    expect(renderedCounter).toBeTruthy()
+    expect(renderedCounter.prop('counter')).toEqual(0)
+
+    const buttonWrapper = wrapper.find('button.set')
+    expect(buttonWrapper).toBeTruthy()
+    buttonWrapper.simulate('click')
+
+    wrapper.update()
+    renderedCounter = wrapper.find(Counter)
+    expect(renderedCounter.prop('counter')).toEqual(100)
   })
 })

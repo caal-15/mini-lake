@@ -20,8 +20,8 @@ export class Provider extends Component {
   }
 
   actionWrapper = action => {
-    return () => {
-      this.setState(action(this.state))
+    return (...args) => {
+      this.setState(action(this.state, ...args))
     }
   }
 
