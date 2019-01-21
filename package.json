@@ -1,6 +1,6 @@
 {
   "name": "mini-lake",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A small copy of waterfall to just to play around with the context API a little more.",
   "source": "src/index.jsx",
   "main": "build/index.js",
@@ -34,15 +34,17 @@
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "husky": "^1.3.1",
     "jest": "^23.6.0",
     "jest-environment-enzyme": "^7.0.1",
     "jest-enzyme": "^7.0.1",
-    "microbundle": "^0.9.0",
     "prettier": "^1.15.3",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
   },
   "husky": {
     "hooks": {
